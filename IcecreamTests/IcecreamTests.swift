@@ -119,12 +119,12 @@ class IcecreamTests: XCTestCase {
     
     // 6.
     func testRemovePersonForJoe() {
-        XCTAssertTrue(testIcecream.remove(person: "Joe"), "Joe should be removed from the dictionary and it should return true.")
-        XCTAssertFalse(testIcecream.remove(person: "Joe"), "Joe should have already been removed at this point, it should then return false.")
+        XCTAssertTrue(testIcecream.remove(forPerson: "Joe"), "Joe should be removed from the dictionary and it should return true.")
+        XCTAssertFalse(testIcecream.remove(forPerson: "Joe"), "Joe should have already been removed at this point, it should then return false.")
     }
     
     func testRemoveForNonExistentPerson() {
-        XCTAssertFalse(testIcecream.remove(person: "Jon Snow"), "Jon Snow doesn't exist in the dictionary, it should return false.")
+        XCTAssertFalse(testIcecream.remove(forPerson: "Jon Snow"), "Jon Snow doesn't exist in the dictionary, it should return false.")
     }
     
     
@@ -134,14 +134,14 @@ class IcecreamTests: XCTestCase {
     }
     
     func testNumberOfAttendeesAfterRemovingOne() {
-        _ = testIcecream.remove(person: "Joe")
+        _ = testIcecream.remove(forPerson: "Joe")
         XCTAssertTrue(testIcecream.numberOfAttendees() == 6, "After removing Joe there should only be 6 attendees.")
     }
     
     
     // 8.
     func testAddPersonWithTravis() {
-        let isAddedToParty = testIcecream.add(person: "Travis", withFlavor: "Strawberry")
+        let isAddedToParty = testIcecream.addPerson(person: "Travis", withFlavor: "Strawberry")
         XCTAssertTrue(isAddedToParty, "Travis is new to the party, the function should return true.")
         
         let flavor = testIcecream.flavor(forPerson: "Travis")
@@ -153,7 +153,7 @@ class IcecreamTests: XCTestCase {
     func testAttendeeList() {
         let expectedList = "Deniz likes Natural Vanilla\nJim likes Natural Vanilla\nJoe likes Peanut Butter and Chocolate\nSophie likes Mexican Chocolate\nSusan likes Cookies 'N' Cream\nTim likes Natural Vanilla\nTom likes Mexican Chocolate"
         
-        let list = testIcecream.attendeeList()
+        let list = testIcecream.attendeesList()
         
         XCTAssertEqual(list, expectedList, "Your list is not correct. Make sure that you're not adding a new line after the last person")
     }
